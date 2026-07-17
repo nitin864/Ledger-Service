@@ -52,7 +52,7 @@ async function loginUserController(req,res){
 
     const {email, password} = req.body;
 
-    const user = await userModel.findOne({email})
+    const user = await userModel.findOne({email}).select("+password")
 
     if(!user){
         return res.status(401).json({
@@ -74,9 +74,9 @@ async function loginUserController(req,res){
        res.cookie("token", token)
 
        res.status(200).json({
-        message: `signwd in successfully as ${user.name}`,
+        message: `sign in successfully as ${user.name}`,
         user: user
        })
 }
 
-module.exports = {registerUserController}
+module.exports = {registerUserController, loginUserController}

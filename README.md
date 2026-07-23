@@ -61,7 +61,7 @@ git clone https://https://github.com/nitin864/Ledger-Service.git
 ```
 
 ```bash
-cd ledger_service_backend
+cd Ledger-Service
 ```
 
 ### Install dependencies

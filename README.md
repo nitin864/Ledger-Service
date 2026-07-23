@@ -156,19 +156,7 @@ The project uses **Nodemailer** with Gmail OAuth2 to send emails such as:
 
 ---
 
-## Dependencies
-
-```json
-express
-mongoose
-jsonwebtoken
-bcrypt
-nodemailer
-dotenv
-cors
-```
-
----
+ 
  
 
 ## Author

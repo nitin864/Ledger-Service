@@ -47,6 +47,5 @@ async function sendEmailWithAttachment(userEmail, name){
     await sendEmail(userEmail, subject, text, html);
 }
 
-module.exports = sendEmail;
-
-module.exports = transporter;
+module.exports ={sendEmailWithAttachment}
+ 

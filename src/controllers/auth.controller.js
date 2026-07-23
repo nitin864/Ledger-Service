@@ -3,6 +3,8 @@ const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken');
 const userModel = require('../models/user.model');
 const user  = require('../models/user.model')
+const emailService = require('../services/email.service')
+
 
 /// - user registr controller
 /// - POST, /api/auth/register   note by nitin (maintainer)
@@ -36,6 +38,8 @@ async function registerUserController(req, res){
         message: "new user created successfully",
         user: user
        })
+
+       await emailService.sendEmailWithAttachment(email, name)
         
     } catch (err){
         console.log(err)

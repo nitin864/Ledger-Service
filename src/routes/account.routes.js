@@ -5,5 +5,11 @@ const router = express.Router()
 const accountController = require('../controllers/account.controller')
 const authMiddleware = require('../middleware/auth.middleware')
 
-router.post('/', authMiddleware.authMiddleware, accountController.creeateAccountController)
+
+router.post(
+  '/',
+  authMiddleware,
+  accountController.creeateAccountController
+);
+
 module.exports = router

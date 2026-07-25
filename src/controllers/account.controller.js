@@ -1,5 +1,15 @@
 const accountModel = require('../models/account.model')
 
-async function accountController(req, res){
-     
+async function creeateAccountController(req, res) {
+    try {
+        const accountData = req.body;
+        const newAccount = await accountModel.createAccount(accountData);
+        res.status(201).json(newAccount);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to create account' });
+    }
 }
+
+module.exports = {
+    creeateAccountController
+};

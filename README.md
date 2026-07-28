@@ -1,4 +1,4 @@
-# Ledger Service
+# Ledger Service (developnment phase)
 
 A RESTful backend for managing user accounts and ledger-style financial transactions, built with **Node.js**, **Express**, and **MongoDB (Mongoose)**. It provides JWT-based authentication, per-user financial accounts, and a double-entry-inspired transaction/ledger data model designed to keep balance history immutable and auditable.
 

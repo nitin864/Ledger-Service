@@ -54,6 +54,12 @@ async function  createTransactionController(){
             message: "Transaction is failed, please retry"
         })
        }
+
+       if(isTransactionExist.status == "REVERSED"){
+        return res.status(200).json({
+            message: "Transaction was reversed, please retry"
+        })
+       }
     }
 
 

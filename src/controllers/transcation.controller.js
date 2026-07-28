@@ -4,12 +4,28 @@ const accountModel = require('../models/account.model')
 const mongoose = require('mongoose')
 
 async function  createTransaction(){
+
+    //validateing the request body
     const {fromAccount , toAccount, amount, idempotencyKey} = req.body;
 
     if(!fromAccount || !toAccount || !amount || !idempotencyKey){
         return res.status(400).json({
             message: "fromAccount, toAccount, amount and idempotencyKey are required fields"
           })
+    }
+
+    const fromUserAccount = await accountModel.findOne({
+        _id: fromAccount,
+    })
+
+    const toUserAccount = await accountModel.findOne({
+        _id: toUserAccount,
+    })
+
+    if(!fromAccount || !toUserAccount){
+        return res.status(400).json({
+            message: "Invalid fromAccount or toAccount"
+        })
     }
 
 

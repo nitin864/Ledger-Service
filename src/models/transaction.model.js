@@ -25,5 +25,14 @@ const transactionSchema = new moongose.Schema({
             message: "Status can be either PENDING, FAILED, COMPLETED OR REVERSED"
         },
         default: "PENDING"
+    },
+    idempotencyKey: {
+        type: String,
+        required :  [true, "Idenpotency Key is required for creating a transaction"],
+        index: true,
+        unique: true
     }
+},{
+    timestamps: true
+    
 })   

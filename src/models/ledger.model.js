@@ -33,3 +33,18 @@ const ledgerSchema = new mongoose.Schema({
 },{
     timestamps: true    
 })
+
+function preventLedgerModification(next) {
+    throw new Error("Ledger entries cannot be modified or deleted.");
+}
+
+ledgerSchema.pre("findOneAndUpdate", preventLedgerModification);
+ledgerSchema.pre("findOneAndDelete", preventLedgerModification);
+ledgerSchema.pre("updateOne", preventLedgerModification);   
+ledgerSchema.pre("deleteOne", preventLedgerModification);
+ledgerSchema.pre("updateMany", preventLedgerModification);
+ledgerSchema.pre("deleteMany", preventLedgerModification);
+
+const ledgerModel = moongose.model("ledger", ledgerSchema)
+
+module.exports = ledgerModel

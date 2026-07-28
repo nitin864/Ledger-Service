@@ -44,6 +44,10 @@ ledgerSchema.pre("updateOne", preventLedgerModification);
 ledgerSchema.pre("deleteOne", preventLedgerModification);
 ledgerSchema.pre("updateMany", preventLedgerModification);
 ledgerSchema.pre("deleteMany", preventLedgerModification);
+ledgerSchema.pre("remove", preventLedgerModification);
+ledgerSchema.pre("findOneAndRemove", preventLedgerModification);
+ledgerSchema.pre("findOneAndReplace", preventLedgerModification);
+
 
 const ledgerModel = moongose.model("ledger", ledgerSchema)
 

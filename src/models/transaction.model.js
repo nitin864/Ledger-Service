@@ -34,5 +34,9 @@ const transactionSchema = new moongose.Schema({
     }
 },{
     timestamps: true
-    
+
 })   
+
+const transacctionModel = moongose.model("transaction", transactionSchema)
+
+module.exports = transacctionModel

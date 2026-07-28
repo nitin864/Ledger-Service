@@ -18,4 +18,12 @@ const transactionSchema = new moongose.Schema({
         required: [true, "Transaction must have an amount"],
         min: [0, "Transaction amount must be positive"],
     },
+    status: {
+        type:String,
+        enum: {
+            values: ["PENDING", "COMPLETED", "FAILED", "REVERSED"],
+            message: "Status can be either PENDING, FAILED, COMPLETED OR REVERSED"
+        },
+        default: "PENDING"
+    }
 })   

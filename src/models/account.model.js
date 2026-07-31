@@ -59,7 +59,11 @@ accountSchema.methods.getBalance = async function(){
             }
         }
     ])
-    return getBalance[0] || { totalDebit: 0, totalCredit: 0 };
+
+    if(getBalance.length == 0) {
+        return 0;
+    }
+    return getBalance[0].balance;
 }
 
 const accountModel = mongoose.model("Account", accountSchema);

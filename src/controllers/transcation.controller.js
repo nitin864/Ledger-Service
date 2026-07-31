@@ -70,5 +70,15 @@ async function  createTransactionController(){
         })
     }
 
+    //derive sender balance and check if it is sufficient to process transaction
+
+    const senderBalance = await fromUserAccount.getBalance()
+
+    if(senderBalance < amount){
+        return res.status(400).json({
+            message: `Insufficient balance. Current balance is ${senderBalance} and transaction amount is ${amount}`
+        })
+    }
+
 
 }

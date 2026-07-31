@@ -52,7 +52,7 @@ async function  createTransactionController(){
        if(isTransactionExist.status == "FAILED"){
         return res.status(200).json({
             message: "Transaction is failed, please retry"
-        })
+        })    
        }
 
        if(isTransactionExist.status == "REVERSED"){
@@ -60,6 +60,14 @@ async function  createTransactionController(){
             message: "Transaction was reversed, please retry"
         })
        }
+    }
+
+    //checking account status 
+
+    if(fromUserAccount.status !== "ACTIVE" || toUserAccount.status !== "ACTIVE"){
+        return res.status(400).json({
+            message: "Both fromAccount and toAccount must be in ACTIVE state to process transaction"
+        })
     }
 
 
